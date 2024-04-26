@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Sign Up | Newsletter</title>
+</head>
+<body>
+  <!--  sign up page  -->
+  <div id="main">
+    <img src="assets/images/illustration-sign-up-mobile.svg" class="img-mobile">
+
+    <div class="wrapper-left">
+      <h1 class="title">Stay updated!</h1>
+      <p class="text desc">Join 60,000+ product managers receiving monthly updates on:</p>
+
+      <!-- list -->
+      <div class="lists">
+        <div class="list">
+          <img src="assets/images/icon-list.svg" style="margin: 0 15px 0 0;">
+          <p class="m-0">Product discovery and building what matters</p>
+        </div>
+        <div class="list">
+          <img src="assets/images/icon-list.svg" style="margin-right: 15px;">
+          <p class="m-0">Measuring to ensure updates are a success</p>
+        </div>
+        <div class="list">
+          <img src="assets/images/icon-list.svg" style="margin-right: 15px;">
+          <p class="m-0">And much more!</p>
+        </div>
+      </div>
+
+      <!-- form -->
+      <form class="form-wrapper">
+        <div class="input-title">
+          <label for="email" class="label-title">Email address</label>
+          <div id="error"></div>
+        </div>
+
+        <div class="input-section">
+          <input type="email" id="email" placeholder="email@company.com">
+          <button type="button" class="btn-cta" onclick="signUp()">Subscribe to monthly newsletter</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="wrapper-right">
+      <img src="assets/images/illustration-sign-up-desktop.svg" alt="sign up">
+    </div>
+  </div>
+  <!--  Sign-up page end  -->
+
+  <!--  Success message start  -->
+  <div id="success">
+    <img src="assets/images/icon-success.svg" class="success-icon">
+    <h1 class="title">Thanks for subscribing!</h1>
+    <div id="confirm"></div>
+
+    <button class="btn btn-cta" onclick="reset()">Dismiss message</button>
+  </div>
+  <!-- Success message end -->
+
+  <script>
+    const errorNote = document.getElementById('error');
+    const email = document.getElementById('email');
+    const confirmPage = document.getElementById('confirm');
+
+    const main = document.getElementById('main');
+    const success = document.getElementById('success');
+
+    const emailPattern = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    function signUp() {
+      if (email.value === '' || !emailPattern.test(email.value.trim())) {
+        errorNote.innerText = "Valid email required";
+        email.style.color = "var(--bg-list)";
+        email.style.borderColor = "var(--bg-list)";
+        email.style.backgroundColor = "var(--cs-red)";
+      } else {
+        main.style.display = 'none';
+        success.style.display = "block";
+        confirmPage.innerHTML = `A confirmation email has been sent to <b>${email.value}</b>. Please open it and click the button inside to confirm your subscription.`;
+      } 
+      return
+    }
+
+    function reset() {
+      main.style.display = 'flex';
+      success.style.display = "none";
+      email.value = '';
+    }
+  </script>
+
+</body>
+</html>
+
+  
+
+  
+
+  
+
+  <!-- 
+
+  A confirmation email has been sent to ash@loremcompany.com. 
+  Please open it and click the button inside to confirm your subscription.
+
+   -->
+
+  
